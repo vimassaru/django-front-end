@@ -1,0 +1,68 @@
+{% include 'global/partials/head.html' %}
+{% load static %}
+
+{% comment %} Parte do arquivo movida para o head.html, um partial
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body> 
+
+{% endcomment %}
+  <nav class="navbar has-background-primary is-spaced is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <img src="{% static 'global/images/Bulma Logo Black.png' %}" width="112" height="28" alt="Bulma">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu"> 
+        {% include 'global/partials/menu.html' %}
+    </div>
+  </nav>
+
+  <main class="section is-desktop is-fullheight has-navbar-fixed-top">
+    {% if post is not None %}
+      <div class="hero is-fullheight">
+          {% block post %}{% endblock post %}
+      </div>
+    {% elif text %}
+      <div class="hero has-text-centered is-fullheight"> 
+        <p class="title is-1 hero-head">
+          {% block text %}{% endblock text %}
+        </p>
+        
+        <div class="hero-body content is-large ">
+            {% block home %}{% endblock home %}
+        </div>
+      </div>
+    {% else %} 
+      <div class="columns is-desktop is-multiline section">
+        {% block posts %}{% endblock posts %}
+      </div>
+    {% endif %}
+  </main>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Elaborated</strong> by <a href="https://www.linkedin.com/in/vinicius-tanaka-67460b166/">Vinícius Tanaka</a>.
+      </p>
+      <a href="https://bulma.io">
+        <img
+          src="{% static 'global/images/made-with-bulma--semiblack.png' %}"
+          alt="Made with Bulma"
+          width="256"
+          height="48">
+      </a>
+    </div>
+  </footer>
+</body>
+</html>

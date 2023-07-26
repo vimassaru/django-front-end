@@ -1,0 +1,13 @@
+{% extends 'global/base.html' %}
+{% include 'global/partials/breadcrumbs.html' %}
+
+{% block post %}
+  <article class="tile is-vertical">
+    <h3 class="title"> 
+      <a href="{% url 'blog:post' post.id %}">
+        {{ post.title }}
+      </a>
+    </h3>
+    <p> {{ post.body }} </p>
+  </article>
+{% endblock post %}
